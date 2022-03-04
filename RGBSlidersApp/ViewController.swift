@@ -37,12 +37,9 @@ class ViewController: UIViewController {
     // MARK: - IBActions
     @IBAction func changeColorSliders(_ sender: UISlider) {
         switch sender.tag {
-        case 0:
-            redLabel.text = string(sender.value)
-        case 1:
-            greenLabel.text = string(sender.value)
-        default:
-            blueLabel.text = string(sender.value)
+        case 0: redLabel.text = string(sender.value)
+        case 1: greenLabel.text = string(sender.value)
+        default: blueLabel.text = string(sender.value)
         }
         
         takeColor(colorView)
