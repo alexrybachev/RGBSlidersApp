@@ -9,11 +9,56 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // MARK: - Outlets
+    @IBOutlet var colorView: UIView!
+    
+    @IBOutlet var redLabel: UILabel!
+    @IBOutlet var greenLabel: UILabel!
+    @IBOutlet var blueLabel: UILabel!
+    
+    @IBOutlet var redSlider: UISlider!
+    @IBOutlet var greenSlider: UISlider!
+    @IBOutlet var blueSlider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        colorView.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1
+        )
+        
+        redLabel.text = string(redSlider.value)
+        greenLabel.text = string(greenSlider.value)
+        blueLabel.text = string(blueSlider.value)
     }
 
+    // MARK: - IBActions
+    @IBAction func changeColorSliders(_ sender: UISlider) {
+        switch sender.tag {
+        case 0:
+            redLabel.text = string(sender.value)
+        case 1:
+            greenLabel.text = string(sender.value)
+        default:
+            blueLabel.text = string(sender.value)
+        }
+        
+        colorView.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1
+        )
+    }
+}
 
+// MARK: - Extension
+extension ViewController {
+    private func string(_ value: Float) -> String {
+        String(format: "%.2f", value)
+    }
 }
 
