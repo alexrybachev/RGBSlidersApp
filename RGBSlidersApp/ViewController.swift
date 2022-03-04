@@ -23,6 +23,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        redSlider.value = Float.random(in: 0...1)
+        greenSlider.value = Float.random(in: 0...1)
+        blueSlider.value = Float.random(in: 0...1)
+        
         colorView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
             green: CGFloat(greenSlider.value),
