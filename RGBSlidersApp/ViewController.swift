@@ -27,12 +27,7 @@ class ViewController: UIViewController {
         greenSlider.value = Float.random(in: 0...1)
         blueSlider.value = Float.random(in: 0...1)
         
-        colorView.backgroundColor = UIColor(
-            red: CGFloat(redSlider.value),
-            green: CGFloat(greenSlider.value),
-            blue: CGFloat(blueSlider.value),
-            alpha: 1
-        )
+        takeColor(colorView)
         
         redLabel.text = string(redSlider.value)
         greenLabel.text = string(greenSlider.value)
@@ -50,19 +45,26 @@ class ViewController: UIViewController {
             blueLabel.text = string(sender.value)
         }
         
+        takeColor(colorView)
+    }
+}
+
+// MARK: - Convert to String
+extension ViewController {
+    private func string(_ value: Float) -> String {
+        String(format: "%.2f", value)
+    }
+}
+
+// MARK: - UIColor
+extension ViewController {
+    private func takeColor(_ colorView: UIView) {
         colorView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
             green: CGFloat(greenSlider.value),
             blue: CGFloat(blueSlider.value),
             alpha: 1
         )
-    }
-}
-
-// MARK: - Extension
-extension ViewController {
-    private func string(_ value: Float) -> String {
-        String(format: "%.2f", value)
     }
 }
 
